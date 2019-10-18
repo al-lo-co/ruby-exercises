@@ -1,0 +1,44 @@
+- uno a uno:
+	rails g model person personal_info: references
+	rails g model personal_info person: references
+
+	has_one :personal_info #person
+	belongs_to :person #personal_info
+
+- uno a muchos:
+	rails g model job person: references
+
+	has_many :jobs #person
+	has_many :my_jobs, class_name: "job" #other way
+
+- muchos a muchos:
+	rails g model hobby name
+	rails g migration create_hobbies_people	person:references hobby:references 
+
+	has_and_belongs_to_many :hobbies #person
+
+	has_and_belongs_to_many :people #hobby
+
+- scopes
+
+	scope :name_scope, -> {order age: :desc}
+	scope :other_scope, -> (starting_string){where ("first_name LIKE ?", "#{starting_string}")}
+	scope :name, lambda
+
+- validations
+
+	validates :title, :company, presence: true, uniqueness: true
+	validates :method_name
+
+	def method_name
+		if lambda
+			lambda
+		end
+	end
+
+	:numericality
+	:length
+	:format
+	:inclusion
+
+
