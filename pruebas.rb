@@ -111,7 +111,7 @@ h.key("dave")
 h.invert
 
 #iteradores
-a = (1..20)to_a
+a = (1..20).to_a
 b = 0
 a.each do |x|
 	sum += x
@@ -180,3 +180,9 @@ objeto.age = 23
 #herencia
 class Boy < Person
 end
+
+#String
+phrase = "hola mundo"
+phrase.include? "hola"
+
+phrase.index "hola"
